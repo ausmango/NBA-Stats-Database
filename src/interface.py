@@ -1,3 +1,6 @@
+import questionary as qu
+from rich.panel import Panel
+from rich.console import Console
 from nba_api.stats.static import players
 from src import nbaAPI as na
 
@@ -11,15 +14,21 @@ def get_player_id(player_name):
 
 def CLI():
     while True:
-        print("\nCommand Line Interface\n---------------"
-              "\nWelcome to the CLI. Below are some commands you may input." \
-              "\n1. Player Common Info" \
-              "\n2. Career Player Stats")
-        user_input = input("Enter your command here: ")
-        if user_input == 1 or user_input == "1":
-            player_name = input("Enter the name of the player: ")
-            print("Looking up player...")
+        action = qu.select(
+            "\n-- NBA STATS DATABASE --",
+            choices=[
+                "Career Player Stats",
+                "Exit"
+            ]
+        ).ask()
+
+        if action == "Exit":
+            print("DATABASE EXITING...")
+            break
+        elif action == "Career Player Stats":
+            player_name = qu.text("Enter player name: ").ask()
+            print("SEARCHING...")
             playerID = get_player_id(player_name)
-            print("Fetching player info...")
-            print(na.get_player_career_stats(playerID))
-        break
+            print("FETCHING...")
+            stats = (na.get_player_career_stats(playerID))
+            print(stats)

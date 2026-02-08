@@ -18,11 +18,6 @@ headers  = {
     'Accept-Language': 'en-US,en;q=0.9',
 }
 
-def get_player_info(playerID):
-    player_info = commonplayerinfo.CommonPlayerInfo(player_id = playerID, headers=headers, timeout=100)
-    dataFrame = player_info.common_player_info.get_data_frame()
-    return dataFrame
-
 def get_player_career_stats(playerID):
     career = playercareerstats.PlayerCareerStats(player_id=playerID)
     dataFrame =career.get_data_frames()[0]
