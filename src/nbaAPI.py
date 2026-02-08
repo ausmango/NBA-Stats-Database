@@ -3,7 +3,8 @@ import requests
 from nba_api.stats.static import players
 from nba_api.stats.endpoints import commonplayerinfo
 from nba_api.stats.endpoints import playercareerstats
-from src import interface as IT
+from nba_api.stats.endpoints import leaguedashteamstats
+from nba_api.stats.endpoints import playerdashboardbyyearoveryear as PD
 
 headers  = {
     'Connection': 'keep-alive',
@@ -22,3 +23,20 @@ def get_player_career_stats(playerID):
     career = playercareerstats.PlayerCareerStats(player_id=playerID)
     dataFrame =career.get_data_frames()[0]
     return dataFrame
+
+def get_player_season_stats(playerID, season="2023-24"):
+    stats = PD.PlayerDashboardByYearOverYear(
+        player_id=playerID,
+        season=season
+    )
+    dataFrame = stats.get_data_frames()[0]
+    return dataFrame
+
+
+# def get_team_metrics(teamID, season ="2025-2026"): (WORK IN PROGRESS - ENDPOINT ISSUES)
+#     team_stats = leaguedashteamstats.LeagueDashTeamStats(
+#         season=season,
+#         headers=headers,
+#     )
+#     dataFrame = team_stats.get_data_frames()[0]
+#     return dataFrame[dataFrame['TEAM_ID'] == int(teamID)]

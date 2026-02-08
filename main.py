@@ -1,7 +1,7 @@
-from src import interface as IT
+from src import interface as it
 
 def main():
-    IT.CLI()
+    it.CLI()
 
 if __name__ =="__main__":
     main()

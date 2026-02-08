@@ -5,23 +5,11 @@ from rich.console import Console
 from rich.syntax import Syntax
 from rich.progress import track
 from nba_api.stats.static import players
+from nba_api.stats.static import teams
 from src import nbaAPI as na
+from src import display
 
 console = Console()
-
-def handle_career_stats():
-    player_name = qu.text("Enter player name: ").ask()
-    playerID = get_player_id(player_name)
-
-    if playerID is None:
-        console.print("[red] Player not found.[/red]")
-        return
-    
-    stats = (na.get_player_career_stats(playerID))
-    print(stats)
-
-
-
 
 def get_player_id(player_name):
     player_list = players.find_players_by_full_name(player_name)
@@ -30,6 +18,14 @@ def get_player_id(player_name):
     else:
         None
 
+# def get_team_id(team_name): (WORK IN PROGRESS - ENDPOINT ISSUES)
+#     team_list = teams.find_teams_by_full_name(team_name)
+#     if team_list:
+#         return team_list[0]['id']
+#     else: 
+#         return None
+
+
 
 def CLI():
     while True:
@@ -37,6 +33,7 @@ def CLI():
             "\n-- NBA STATS DATABASE --",
             choices=[
                 "Career Player Stats",
+                "Season Player Stats",
                 "Exit"
             ]
         ).ask()
@@ -44,8 +41,9 @@ def CLI():
             print("DATABASE EXITING...")
             break
         elif action == "Career Player Stats":
-            handle_career_stats()
-            
+            display.handle_career_stats()
+        elif action == "Season Player Stats":
+            display.handle_season_stats()
 
 
 
