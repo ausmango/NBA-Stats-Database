@@ -23,5 +23,7 @@ This project allows users to interact with historical NBA player data via a clea
    cd NBA-Stats-Database
 2. Install dependencies
 
-      pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
+
 
