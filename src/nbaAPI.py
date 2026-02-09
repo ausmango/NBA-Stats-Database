@@ -19,10 +19,12 @@ headers  = {
     'Accept-Language': 'en-US,en;q=0.9',
 }
 
+
 def get_player_career_stats(playerID):
     career = playercareerstats.PlayerCareerStats(player_id=playerID)
     dataFrame =career.get_data_frames()[0]
     return dataFrame
+
 
 def get_player_season_stats(playerID, season="2023-24"):
     stats = PD.PlayerDashboardByYearOverYear(
@@ -31,12 +33,3 @@ def get_player_season_stats(playerID, season="2023-24"):
     )
     dataFrame = stats.get_data_frames()[0]
     return dataFrame
-
-
-# def get_team_metrics(teamID, season ="2025-2026"): (WORK IN PROGRESS - ENDPOINT ISSUES)
-#     team_stats = leaguedashteamstats.LeagueDashTeamStats(
-#         season=season,
-#         headers=headers,
-#     )
-#     dataFrame = team_stats.get_data_frames()[0]
-#     return dataFrame[dataFrame['TEAM_ID'] == int(teamID)]

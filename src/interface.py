@@ -34,6 +34,7 @@ def CLI():
             choices=[
                 "Career Player Stats",
                 "Season Player Stats",
+                "Compare Player Season Stats",
                 "Exit"
             ]
         ).ask()
@@ -44,15 +45,5 @@ def CLI():
             display.handle_career_stats()
         elif action == "Season Player Stats":
             display.handle_season_stats()
-
-
-
-
-# player_name = qu.text("Enter player name: ").ask()
-            # print("SEARCHING...")
-            # playerID = get_player_id(player_name)
-            # for i in track(range(10), description="FETCHING..."):
-            #     time.sleep(0.1)
-            # stats = (na.get_player_career_stats(playerID))
-            # console.print(Panel(f"{player_name} - Career Stats", style="yellow"))
-            # console.print(stats.to_string())
+        elif action == "Compare Player Season Stats":
+            display.handle_compare_players()
