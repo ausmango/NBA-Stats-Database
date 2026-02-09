@@ -9,16 +9,6 @@ This project allows users to interact with historical NBA player data via a clea
 - Season-by-season totals
 - Player seasonal stats comparisaon
 
-NBA-Stats-Database/
-├── src/
-│   ├── nbaAPI.py        # NBA API data fetching logic
-│   ├── interface.py    # CLI navigation and user input
-│   ├── display.py      # Output formatting and stat calculations
-│   └── utils.py        # Helper utilities (timing, etc.)
-├── main.py              # Application entry point
-├── requirements.txt     # Python dependencies
-└── README.md
-
 ## Requirements
 
 - Python 3.7+
@@ -34,3 +24,4 @@ NBA-Stats-Database/
 2. Install dependencies
 
       pip install -r requirements.txt
+
